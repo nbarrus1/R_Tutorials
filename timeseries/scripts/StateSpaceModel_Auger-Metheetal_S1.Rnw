@@ -2579,6 +2579,7 @@ Let us first load \texttt{rstan} and set up options so it runs processes in para
 
 <<stanSetUp, cache=TRUE, warning=FALSE, message=FALSE>>=
 library(rstan)
+library(here)
 # To run in parallel on multiple cores
 options(mc.cores=parallel::detectCores())
 # To avoid recompiling unchanged Stan program
@@ -2657,7 +2658,7 @@ We can now call the model file to fit the model. We use the \texttt{stan} functi
 This may take a few minutes to run.
 
 <<StanFit, cache=TRUE, tidy=FALSE>>=
-f2pStan <- stan(file = "toy2p.stan",
+f2pStan <- stan(file = here("timeseries/STAN_mods", "SSM_Toys_Stan.stan"),
             data = dataStan,
             chains = 3, iter = 3000)
 @
